@@ -7,6 +7,6 @@ end
 use Rack::MethodOverride
 
 # use UsersController
-# use ShopsController
 # use SalesController
+# use ItemsController
 run ApplicationController
