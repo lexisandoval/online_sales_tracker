@@ -11,7 +11,7 @@
     width: 100%;
   }
 
-  /* --- Welcome Page Styles --- */
+  /* --- Home Page Styles --- */
   body {
     background-color: #B4D071;
     color: #333;
@@ -26,7 +26,6 @@
     box-shadow: 0 0 10px rgba(0,0,0,.3);
     margin: auto;
     max-width: 90%;
-    padding: 2%; 
     min-width: 90%;
     min-height: 100%;
     max-height: 100%;
@@ -99,6 +98,7 @@
   footer.branding {
     position: absolute;
     bottom: 0;
+    
   }
 }
 
