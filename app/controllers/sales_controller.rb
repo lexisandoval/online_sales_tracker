@@ -1,2 +1,2 @@
-class SalesController < Sinatra::Base
+class SalesController < ApplicationController
 end
