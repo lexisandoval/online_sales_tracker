@@ -29,13 +29,29 @@ class SalesController < ApplicationController
 
   get '/sales/:id/edit' do
     set_sale
-    erb :'sales/edit'
+    if logged_in?
+      if @sale.user == current_user
+        erb :'sales/edit'
+      else 
+        redirect '/sales'
+      end
+    else
+      redirect '/'
+    end
   end
 
   patch '/sales/:id' do
     set_sale
-    @sale.update(title: params[:title], amount: params[:amount])
-    redirect "/sales/#{@sale.id}"
+    if logged_in?
+      if @sale.user == current_user
+        @sale.update(title: params[:title], amount: params[:amount])
+        redirect "/sales/#{@sale.id}"
+      else
+        redirect '/sales'
+      end
+    else
+      redirect '/'
+    end
   end
 
 
