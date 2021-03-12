@@ -20,10 +20,11 @@
 
       <% if authorized_edit?(sale) %>
         <section>
-          <a href="/sales/<%= sale.id %>" class="sale"><h2><%= sale.title %>: $<%= sale.amount %><h2></a>
+          <a href="/sales/<%= sale.id %>" class="sale"><h2><%= sale.title %>: $<%= sale.amount.to_i %><h2></a>
+          <p><%= sale.id %></p>
         </section>
       <% end%>
-      
+
     <% end %>
 
   </body>

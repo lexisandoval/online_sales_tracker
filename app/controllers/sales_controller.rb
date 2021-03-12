@@ -54,6 +54,16 @@ class SalesController < ApplicationController
     end
   end
 
+  delete '/sales/:id' do
+    set_sale
+    if authorized_edit?(@sale)
+      @sale.destroy
+      redirect '/sales'
+    else
+      redirect '/sales'
+    end
+  end
+
   private #only to be used within SalesController
   
   def set_sale
