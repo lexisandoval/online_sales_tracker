@@ -7,10 +7,10 @@ class UsersController < ApplicationController
 
   post '/login' do
     #create session for user
-    @user = User.find_by(params[:email]) #find user
+    @user = User.find_by(email: params[:email]) #find user
     
     #make sure the user-password combo is valid
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.slug}"
     else
