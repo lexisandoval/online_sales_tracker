@@ -11,12 +11,21 @@
       <button class="logout bar"><a href="/logout" class="plain">Logout</a></button>
     </nav>
 
-    <h1><%= @sale.title %></h1>
+    <h1>Edit Sale</h1>
 
     <section>
-      <h2>Amount: $<%= @sale.amount %></h2>
-      <h2>User ID: <%= @sale.user_id %></h2>
-      <button class="enter"><a href="/sales/<%= @sale.id %>/edit" class="plain">Edit this sale</a></button>
+      <form action="/sales" method="post">
+        <label for="title">Title: </label>
+        <input type="text" id="title" name="title"><br><br>
+        
+        <label for="amount">Amount: $</label>
+        <input type="text" id="amount" name="amount"><br>
+        
+        <input type="submit" value="Update Sale">
+      </form><br>
+
+      <button class="enter"><a href="/sales" class="plain">Back to Sales</a></button>
     </section>
+
   </body>
 </html>

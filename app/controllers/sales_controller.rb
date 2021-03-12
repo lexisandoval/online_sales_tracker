@@ -27,4 +27,9 @@ class SalesController < ApplicationController
     erb :'sales/show'
   end
 
+  get '/sales/:id/edit' do
+    @sale = Sale.find_by(params[:id])
+    erb :'sales/edit'
+  end
+
 end

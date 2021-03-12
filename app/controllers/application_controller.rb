@@ -26,6 +26,11 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!current_user
     end
+
+    def total_revenue
+      sum = Sale.all.sum(:amount).round(2)
+    end
+
   end
   
 end
