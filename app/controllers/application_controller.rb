@@ -27,8 +27,12 @@ class ApplicationController < Sinatra::Base
       !!current_user
     end
 
-    def total_revenue
-      sum = Sale.all.sum(:amount).round(2)
+    def total_revenue(user)
+      total = user.sales.sum(:amount).round(2)
+    end
+
+    def authorized_edit?(sale)
+      sale.user == current_user
     end
 
   end

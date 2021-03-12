@@ -30,7 +30,7 @@ class SalesController < ApplicationController
   get '/sales/:id/edit' do
     set_sale
     if logged_in?
-      if @sale.user == current_user
+      if authorized_edit?(@sale)
         erb :'sales/edit'
       else 
         redirect '/sales'
@@ -43,7 +43,7 @@ class SalesController < ApplicationController
   patch '/sales/:id' do
     set_sale
     if logged_in?
-      if @sale.user == current_user
+      if authorized_edit?(@sale)
         @sale.update(title: params[:title], amount: params[:amount])
         redirect "/sales/#{@sale.id}"
       else
@@ -53,8 +53,6 @@ class SalesController < ApplicationController
       redirect '/'
     end
   end
-
-
 
   private #only to be used within SalesController
   

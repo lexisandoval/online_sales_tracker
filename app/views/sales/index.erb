@@ -11,16 +11,20 @@
       <button class="logout bar"><a href="/logout" class="plain">Logout</a></button>
     </nav>
 
-    <h1 class="head">Current total revenue: <%= total_revenue %></h1>
+    <%# <h1 class="head">Current total revenue: <%= total_revenue() %> 
 
     <h1>Here are your sales:</h1>
     <img src="images/sale.png"> 
 
     <% @sales.each do |sale| %>
-      <section>
-        <a href="/sales/<%= sale.id %>" class="plain"><h2><%= sale.title %>: $<%= sale.amount %><h2></a>
-      </section>
-    <% end%>
+
+      <% if authorized_edit?(sale) %>
+        <section>
+          <a href="/sales/<%= sale.id %>" class="sale"><h2><%= sale.title %>: $<%= sale.amount %><h2></a>
+        </section>
+      <% end%>
+      
+    <% end %>
 
   </body>
 </html>
