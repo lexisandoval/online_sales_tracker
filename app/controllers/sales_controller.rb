@@ -23,13 +23,27 @@ class SalesController < ApplicationController
   end
 
   get '/sales/:id' do
-    @sale = Sale.find_by(params[:id])
+    set_sale
     erb :'sales/show'
   end
 
   get '/sales/:id/edit' do
-    @sale = Sale.find_by(params[:id])
+    set_sale
     erb :'sales/edit'
+  end
+
+  patch '/sales/:id' do
+    set_sale
+    @sale.update(title: params[:title], amount: params[:amount])
+    redirect "/sales/#{@sale.id}"
+  end
+
+
+
+  private #only to be used within SalesController
+  
+  def set_sale
+    @sale = Sale.find_by(params[:id])
   end
 
 end

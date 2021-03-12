@@ -14,12 +14,14 @@
     <h1>Edit Sale</h1>
 
     <section>
-      <form action="/sales" method="post">
+      <form action="/sales/<%= @sale.id %>" method="post">
+        <input type="hidden" id="hidden" name="_method" value="patch">
+
         <label for="title">Title: </label>
-        <input type="text" id="title" name="title"><br><br>
+        <input type="text" id="title" name="title" value="<%= @sale.title %>"><br><br>
         
         <label for="amount">Amount: $</label>
-        <input type="text" id="amount" name="amount"><br>
+        <input type="text" id="amount" name="amount" value="<%= @sale.amount %>"><br>
         
         <input type="submit" value="Update Sale">
       </form><br>
