@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :sales
 
   def slug
-    username.downcase.gsub(" ","-")
+    name.downcase.gsub(" ","-")
   end 
 
   def self.find_by_slug(slug)

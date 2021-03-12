@@ -1,1 +1,15 @@
-<h1>Profile</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online Sales Tracker</title>
+    <link rel="stylesheet" href="/stylesheets/pages.css"/>
+  </head>
+  <body>
+    <h1>Hello, <%= @user.name %></h1>
+
+    <form action="/logout" method="post">
+      <input type="submit" name="logout" value="Logout">
+    </form>
+
+  </body>
+</html>
