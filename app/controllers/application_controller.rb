@@ -12,5 +12,16 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :index
   end
+
+  helpers do
+    def current_user
+      #assigns current user once, won't call to database more than once
+      @current_user ||= User.find_by(id: session[:user_id])
+    end
+
+    def logged_in?
+      !!current_user
+    end
+  end
   
 end
