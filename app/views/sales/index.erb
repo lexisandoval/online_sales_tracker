@@ -5,12 +5,6 @@
     <link rel="stylesheet" href="/stylesheets/pages.css"/>
   </head>
   <body>
-    <nav>
-      <button class="bar"><a href="/" class="plain">Dashboard</a></button>
-      <button class="bar"><a href="/sales/new" class="plain">Add a New Sale</a></button>
-      <button class="logout bar"><a href="/logout" class="plain">Logout</a></button>
-    </nav>
-
     <h1 class="head">Current total revenue: $<%= total_revenue(current_user) %></h1>
     <h2 class="subhead">Number of sales you have logged: <%= current_user.sales.count %></h2>
     <h2 class="subhead">Here are your sales:</h3>

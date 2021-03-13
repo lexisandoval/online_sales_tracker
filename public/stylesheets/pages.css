@@ -73,12 +73,12 @@
     justify-content: center;
     align-items: center; 
     flex-direction: row;
-    padding-left: 10.5%;
-    padding-top: 5%;
+    padding-left: 12%;
+    padding-top: 3%;
   }
 
   .head {
-    padding-top: 3%;
+    padding-top: 2%;
   }
 
   .plain {
