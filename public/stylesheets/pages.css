@@ -55,6 +55,11 @@
     text-align: center;
   }
 
+  h5 {
+    line-height: 36px;
+    text-align: center;
+  }
+
   img {
     width: 8%;
     height: auto;
