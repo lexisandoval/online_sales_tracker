@@ -7,10 +7,6 @@
   <body>
     <h1 class="head">Login</h1>
     <img src="images/login.png">
-
-    <% if flash[:message] %>
-      <h5 class="error"><%= flash[:message] %></h5>
-    <% end %>
     
     <section>
       <form action="/login" method="post">
