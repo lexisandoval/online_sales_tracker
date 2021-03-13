@@ -112,4 +112,11 @@
     margin-bottom: 3%;
   }
 
+  .img_bar {
+    float: left;
+    width: 5%;
+    height: auto;
+    margin-left: 5%;
+  }
+
 }
