@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       redirect "/users/#{@user.slug}"
     else
       # display error message to user, go back to login page
+      flash[:message] = "There was an issue while logging you in. Please make sure you've entered your information correctly."
       redirect '/login'
     end
   end
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
       redirect "/users/#{@user.slug}"
     else
       # Add error message here
+      flash[:message] = "There was an issue while creating your account. Please fill out all of the forms below."
       redirect '/signup'
     end
   end
