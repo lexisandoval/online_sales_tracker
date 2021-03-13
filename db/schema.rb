@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_10_194239) do
-
-  create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.string "type"
-    t.float "amount"
-    t.integer "sale_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2021_03_13_195040) do
 
   create_table "sales", force: :cascade do |t|
     t.string "title"
