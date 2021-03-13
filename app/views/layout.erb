@@ -15,6 +15,10 @@
   <body>
     <div>
       <br>
+      <% if flash[:message] %>
+        <p class="success"><%= flash[:message] %></p>
+      <% end %> 
+      
       <% if flash[:error] %>
         <p class="error"><%= flash[:error] %></p>
       <% end %>

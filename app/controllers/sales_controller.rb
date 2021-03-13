@@ -16,7 +16,8 @@ class SalesController < ApplicationController
 
     if params[:amount] != ""
       @sale = Sale.create(title: params[:title], amount: params[:amount], user_id: current_user.id)
-      redirect "sales/#{@sale.id}"
+      flash[:message] = "Your sale has been added."
+      redirect '/sales'
     else
       redirect '/sales/new'
     end
@@ -45,6 +46,7 @@ class SalesController < ApplicationController
     if logged_in?
       if authorized_edit?(@sale) && params[:title] != "" && params[:amount] != ""
         @sale.update(title: params[:title], amount: params[:amount])
+        flash[:message] = "Your sale information has been updated."
         redirect "/sales/#{@sale.id}"
       else
         redirect '/sales'
@@ -58,6 +60,7 @@ class SalesController < ApplicationController
     set_sale
     if authorized_edit?(@sale)
       @sale.destroy
+      flash[:message] = "Your sale has been deleted."
       redirect '/sales'
     else
       redirect '/sales'
