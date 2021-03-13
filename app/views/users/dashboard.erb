@@ -13,6 +13,7 @@
 
     <h1 class="head">Hello, <%= @user.name %>!</h1>
     <h2 class="subhead">Here's a snapshot of the sales that have been made recently:</h2>
+    
     <% @sales.sort_by(&:created_at).reverse.each do |sale| %>
       <h3><%= sale.user.name%> made $<%= sprintf '%.2f', sale.amount %> on <%= sale.created_at.strftime("%B %d, %Y") %></h3><br>
     <% end %>
