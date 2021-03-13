@@ -43,7 +43,7 @@ class SalesController < ApplicationController
   patch '/sales/:id' do
     set_sale
     if logged_in?
-      if authorized_edit?(@sale)
+      if authorized_edit?(@sale) && params[:title] != "" && params[:amount] != ""
         @sale.update(title: params[:title], amount: params[:amount])
         redirect "/sales/#{@sale.id}"
       else

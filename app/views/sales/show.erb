@@ -17,7 +17,6 @@
       <h2>Amount: $<%= @sale.amount %></h2>
       <h2>Date: <%= @sale.created_at.strftime("%B %m, %Y") %></h2>
       <button class="enter"><a href="/sales/<%= @sale.id %>/edit" class="plain">Edit this sale</a></button>
-      <%# <button class="enter"><a href="/sales/delete" class="plain">Delete this sale</a></button> %>
       <form action="/sales/<%= @sale.id %>" method="post">
         <input type="hidden" id="hidden" name="_method" value="delete">
         <input type="submit" value="Delete">
