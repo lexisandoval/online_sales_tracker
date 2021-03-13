@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/stylesheets/pages.css"/>
   </head>
   <body>
-    <h1 class="head">Hello, <%= @user.name %>!</h1>
+    <h1 class="head">Hello, <%= @user.name.capitalize %>!</h1>
     <h2 class="subhead">Here's a preview of the sales that have been made recently:</h2>
     
     <% @sales.sort_by(&:created_at).reverse.each do |sale| %>

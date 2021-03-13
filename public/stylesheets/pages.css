@@ -86,6 +86,10 @@
     color: black;
   }
 
+  a:hover {
+    text-decoration: none;
+  }
+
   .item, .sale {
     color: black;
   }
@@ -125,5 +129,9 @@
   .success {
     color: rgb(0, 156, 0); 
     text-align: center;
+  }
+
+  .glyphicon {
+    font-size: 30px;
   }
 }
