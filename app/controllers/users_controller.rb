@@ -39,9 +39,9 @@ class UsersController < ApplicationController
         flash[:error] = "There was an issue while creating your account. Please fill out all of the forms below."
         redirect '/signup'
       end
-      #if the account already exists ...
+    #if the account already exists ...
     else
-      flash[:error] = "An account already exists with that email. Please login or create an account with a different email."
+      flash[:error] = "An account with that e-mail already exists. Please login or create an account with a different email."
       redirect '/signup'
     end
   end
