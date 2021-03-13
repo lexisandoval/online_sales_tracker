@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def total_revenue(user)
-      total = user.sales.sum(:amount).round(2)
+      total = sprintf '%.2f', user.sales.sum(:amount)
     end
 
     def authorized_edit?(sale)

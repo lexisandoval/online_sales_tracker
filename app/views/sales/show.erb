@@ -14,7 +14,7 @@
     <h1 class="head"><%= @sale.title %></h1>
 
     <section>
-      <h2>Amount: $<%= @sale.amount %></h2>
+      <h2>Amount: $<%= sprintf '%.2f', @sale.amount %></h2>
       <h2>Date: <%= @sale.created_at.strftime("%B %m, %Y") %></h2>
       <button class="enter"><a href="/sales/<%= @sale.id %>/edit" class="plain">Edit this sale</a></button>
       <form action="/sales/<%= @sale.id %>" method="post">
