@@ -91,7 +91,11 @@
   } 
 
   .enter {
-    width: 10%;
+    font-size: medium;
+    padding: 1%;
+    background-color: #a4c948;
+    border-radius: 5px;
+    border-width: 0;
   }
 
   .bar {
@@ -99,6 +103,7 @@
     background-color: #a4c948;
     border-radius: 5px;
     border-width: 0;
+    font-size: medium;
   }
 
   .subhead {
