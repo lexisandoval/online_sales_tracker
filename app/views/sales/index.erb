@@ -6,26 +6,26 @@
   </head>
   <body>
     <nav>
-      <button class="bar"><a href="/" class="plain">Profile</a></button>
+      <button class="bar"><a href="/" class="plain">Dashboard</a></button>
       <button class="bar"><a href="/sales/new" class="plain">Add a New Sale</a></button>
       <button class="logout bar"><a href="/logout" class="plain">Logout</a></button>
     </nav>
 
     <h1 class="head">Current total revenue: $<%= total_revenue(current_user) %></h1>
+    <h2 class="subhead">Number of sales you have logged: <%= current_user.sales.count %></h2>
 
     <h2 class="subhead">Here are your sales:</h3>
     <img src="images/sale.png"> 
 
-    <% @sales.each do |sale| %>
+    <section>
+      <% @sales.each do |sale| %>
+        <% if authorized_edit?(sale) %>
+            <h3><a href="/sales/<%= sale.id %>" class="sale"><%= sale.title %>: $<%= sprintf '%.2f', sale.amount %></a></h3>
+        <% end%>
+      <% end %>
+    </section>
 
-      <% if authorized_edit?(sale) %>
-        <section>
-          <h3><a href="/sales/<%= sale.id %>" class="sale"><%= sale.title %>: $<%= sprintf '%.2f', sale.amount %></a></h3>
-        </section>
-      <% end%>
-
-    <% end %>
-
+    <br><br>
   </body>
 </html>
 

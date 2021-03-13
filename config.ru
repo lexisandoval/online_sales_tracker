@@ -7,5 +7,4 @@ require './config/environment'
 use Rack::MethodOverride
 use UsersController
 use SalesController
-use ItemsController
 run ApplicationController
