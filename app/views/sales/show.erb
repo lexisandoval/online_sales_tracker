@@ -9,7 +9,7 @@
 
     <section>
       <h2>Amount: $<%= sprintf '%.2f', @sale.amount %></h2>
-      <h2>Date: <%= @sale.created_at.strftime("%B %d, %Y") %></h2>
+      <h2>Date: <%= @sale.created_at.strftime("%B %d, %Y") %></h2><br><br>
 
       <button class="enter"><a href="/sales/<%= @sale.id %>/edit" class="plain">Edit this sale</a></button><br><br>
       

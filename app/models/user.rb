@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_many :sales
-  validates :email, uniqueness: true
 
   def slug
     name.downcase.gsub(" ","-")
