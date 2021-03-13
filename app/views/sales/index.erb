@@ -13,14 +13,14 @@
 
     <h1 class="head">Current total revenue: $<%= total_revenue(current_user) %></h1>
 
-    <h1>Here are your sales:</h1>
+    <h2 class="subhead">Here are your sales:</h3>
     <img src="images/sale.png"> 
 
     <% @sales.each do |sale| %>
 
       <% if authorized_edit?(sale) %>
         <section>
-          <a href="/sales/<%= sale.id %>" class="sale"><h2><%= sale.title %>: $<%= sale.amount.to_i %><h2></a>
+          <h3><a href="/sales/<%= sale.id %>" class="sale"><%= sale.title %>: $<%= sale.amount.to_i %></a></h3>
         </section>
       <% end%>
 
