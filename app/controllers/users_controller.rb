@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       redirect "/users/#{@user.slug}"
     else
       # display error message to user, go back to login page
-      flash[:message] = "There was an issue while logging you in. Please make sure you've entered your information correctly."
+      flash[:error] = "There was an issue while logging you in. Please make sure you've entered your information correctly."
       redirect '/login'
     end
   end
@@ -26,14 +26,22 @@ class UsersController < ApplicationController
 
   #add new user to DB
   post '/users' do
-    if params[:name] != "" && params[:email] != "" && params[:password] != ""
-      @user = User.create(params)
-      session[:user_id] = @user.id
+    #check if an account with that email already exists
+    if User.where(email: params[:email]).blank?
+      #if the account doesn't exist ...
+      if (params[:name] != "" && params[:email] != "" && params[:password] != "")
+        @user = User.create(params)
+        session[:user_id] = @user.id
 
-      redirect "/users/#{@user.slug}"
+        redirect "/users/#{@user.slug}"
+      else
+        # Add error message here
+        flash[:error] = "There was an issue while creating your account. Please fill out all of the forms below."
+        redirect '/signup'
+      end
+      #if the account already exists ...
     else
-      # Add error message here
-      flash[:message] = "There was an issue while creating your account. Please fill out all of the forms below."
+      flash[:error] = "An account already exists with that email. Please login or create an account with a different email."
       redirect '/signup'
     end
   end

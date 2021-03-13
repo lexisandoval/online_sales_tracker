@@ -15,8 +15,8 @@
   <body>
     <div>
       <br>
-      <% if flash[:message] %>
-        <p class="error"><%= flash[:message] %></p>
+      <% if flash[:error] %>
+        <p class="error"><%= flash[:error] %></p>
       <% end %>
       <%= yield %>
     </div>
