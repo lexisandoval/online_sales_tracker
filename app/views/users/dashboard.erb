@@ -9,7 +9,7 @@
     <h2 class="subhead">Here's a preview of the sales that have been made recently:</h2>
     
     <% @sales.sort_by(&:created_at).reverse.first(6).each do |sale| %>
-      <h3><%= sale.user.name%> made <b>$<%= sprintf '%.2f', sale.amount %></b> on <%= sale.created_at.strftime("%B %d, %Y") %></h3>
+      <h3><%= sale.user.name.capitalize %> made <b>$<%= sprintf '%.2f', sale.amount %></b> on <%= sale.created_at.strftime("%B %d, %Y") %></h3>
     <% end %>
     <br>
   </body>
