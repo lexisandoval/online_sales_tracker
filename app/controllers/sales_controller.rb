@@ -19,7 +19,7 @@ class SalesController < ApplicationController
       flash[:message] = "Your sale has been added."
       redirect '/sales'
     else
-      flash[:error] = "Please make sure all of the fields are completed."
+      flash[:error] = "Please make sure all of the fields have been completed."
       redirect '/sales/new'
     end
   end
@@ -54,7 +54,7 @@ class SalesController < ApplicationController
       flash[:message] = "Your sale information has been updated."
       redirect "/sales/#{@sale.id}"
     else
-      flash[:error] = "Please make sure none of the fields are empty."
+      flash[:error] = "Please make sure all of the fields have been completed."
       redirect "/sales/#{@sale.id}/edit"
     end
   end
