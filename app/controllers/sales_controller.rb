@@ -14,13 +14,12 @@ class SalesController < ApplicationController
   end
 
   post '/sales' do
-    redirect_if_not_logged_in
-
-    if params[:amount] != ""
+    if params[:amount] != "" && params[:title] != ""
       @sale = Sale.create(title: params[:title], amount: params[:amount], user_id: current_user.id)
       flash[:message] = "Your sale has been added."
       redirect '/sales'
     else
+      flash[:error] = "Please make sure all of the fields are completed."
       redirect '/sales/new'
     end
   end
@@ -38,6 +37,7 @@ class SalesController < ApplicationController
 
   get '/sales/:id/edit' do
     set_sale
+    redirect_if_not_logged_in
 
     if authorized_edit?(@sale)
       erb :'sales/edit'
@@ -48,27 +48,23 @@ class SalesController < ApplicationController
 
   patch '/sales/:id' do
     set_sale
-    redirect_if_not_logged_in
 
-    if authorized_edit?(@sale) && params[:title] != "" && params[:amount] != ""
+    if params[:title] != "" && params[:amount] != ""
       @sale.update(title: params[:title], amount: params[:amount])
       flash[:message] = "Your sale information has been updated."
       redirect "/sales/#{@sale.id}"
     else
-      redirect '/sales'
+      flash[:error] = "Please make sure none of the fields are empty."
+      redirect "/sales/#{@sale.id}/edit"
     end
   end
 
   delete '/sales/:id' do
     set_sale
 
-    if authorized_edit?(@sale)
-      @sale.destroy
-      flash[:message] = "Your sale has been deleted."
-      redirect '/sales'
-    else
-      redirect_if_not_authorized(@sale)
-    end
+    @sale.destroy
+    flash[:message] = "Your sale has been deleted."
+    redirect '/sales'
   end
 
   private #only to be used within SalesController
