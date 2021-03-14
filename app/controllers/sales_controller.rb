@@ -70,7 +70,7 @@ class SalesController < ApplicationController
   private #only to be used within SalesController
   
   def set_sale
-    @sale = Sale.find_by(params[:id])
+    @sale = Sale.find_by_id(params[:id])
   end
 
 end
