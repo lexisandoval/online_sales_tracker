@@ -5,8 +5,8 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions
-		set :session_secret, "asdfghj"
+    enable :sessions                # session implementation here, creates server-side object (hash) that persists
+		set :session_secret, "asdfghj"  # user data so the user doesn't have to keep logging in
     register Sinatra::Flash
   end
 
@@ -20,12 +20,12 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def current_user
-      #assigns current user once, won't call to database more than once
-      @current_user ||= User.find_by(id: session[:user_id])
+      # assigns current user once, won't call to database more than once
+      @current_user ||= User.find_by(id: session[:user_id]) # session is set here from '/login'
     end
 
     def logged_in?
-      !!current_user
+      !!current_user #truthy value of current user object
     end
 
     def total_revenue(user)

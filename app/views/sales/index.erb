@@ -13,7 +13,7 @@
     <section>
       <% @sales.each do |sale| %>
         <% if authorized_edit?(sale) %>
-            <h3><a href="/sales/<%= sale.id %>" class="sale"><%= sale.title %>: $<%= sprintf '%.2f', sale.amount %></a></h3>
+          <h3><a href="/sales/<%= sale.id %>" class="sale"><%= sale.title %>: $<%= sprintf '%.2f', sale.amount %></a></h3>
         <% end%>
       <% end %>
     </section>

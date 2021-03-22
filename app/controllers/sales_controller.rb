@@ -2,9 +2,9 @@ class SalesController < ApplicationController
 
   get '/sales' do
     redirect_if_not_logged_in
-
+    
     @sales = Sale.all
-    erb :'sales/index'
+    erb :'sales/index' # render the sales index page, uses @sales instance var
   end
 
   get '/sales/new' do
@@ -17,7 +17,7 @@ class SalesController < ApplicationController
     if params[:amount] != "" && params[:title] != ""
       @sale = Sale.create(title: params[:title], amount: params[:amount], user_id: current_user.id)
       flash[:message] = "Your sale has been added."
-      redirect '/sales'
+      redirect '/sales' # redirect instead of render so that the sale isn't added twice 
     else
       flash[:error] = "Please make sure all of the fields have been completed."
       redirect '/sales/new'

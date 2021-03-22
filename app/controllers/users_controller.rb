@@ -1,17 +1,16 @@
 class UsersController < ApplicationController
 
   get '/login' do
-    #render login page
+    # render login page
     erb :'users/login'
   end
 
   post '/login' do
-    #create session for user
     @user = User.find_by(email: params[:email]) #find user
     
-    #make sure the user-password combo is valid
+    # make sure the user-password combo is valid
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
+      session[:user_id] = @user.id # set the session
       redirect "/users/#{@user.slug}"
     else
       # display error message to user, go back to login page
